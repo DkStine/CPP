@@ -8,23 +8,44 @@ struct node
     struct node *next;
 };
 
+void insert_at_front(struct node **head, int data)
+{
+    node *new_node = new node();
+    new_node->data = data;
+    new_node->prev = NULL;
+    new_node->next = *head;
+
+    if (*head != NULL)
+    {
+        (*head)->prev = new_node;
+    }
+
+    (*head) = new_node;
+}
+
 int main()
 {
-    node *head_node = new node();
-    head_node->data = 1;
-    head_node->prev = NULL;
+    node *head = NULL;
+    node *tail = NULL;
 
-    node *tail_node = new node();
-    tail_node->data = 2;
-    tail_node->prev = head_node;
-    tail_node->next = NULL;
-
-    head_node->next = tail_node;
-
-    while (head_node != NULL)
+    for (int i = 1; i <= 4; i++)
     {
-        cout<<head_node->data<<endl;
-        head_node = head_node->next;
+        insert_at_front(&head, i);
+    }
+
+    while (head != NULL)
+    {
+        tail = head;
+        cout<<head->data<<" ";
+        head = head->next;
+    }
+
+    cout<<endl;
+
+    while (tail != NULL)
+    {
+        cout<<tail->data<<" ";
+        tail = tail->prev;
     }
 
     return 0;
