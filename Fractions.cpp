@@ -23,7 +23,20 @@ Fraction<T>::Fraction(T num, T den) : numerator(num), denominator(den) {}
 template <typename T>
 Fraction<T> Fraction<T>::reduce() {
     T gcd_val = gcd(numerator, denominator);
-    return Fraction<T>(numerator / gcd_val, denominator / gcd_val);
+    numerator = numerator / gcd_val;
+    denominator = denominator / gcd_val;
+
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+    return *this;
+  
+    // return Fraction<T>(numerator / gcd_val, denominator / gcd_val);
 }
 
 // Get the numerator of the fraction
@@ -41,6 +54,15 @@ T Fraction<T>::get_denominator() {
 // Overloaded operator: Addition
 template <typename T>
 Fraction<T> Fraction<T>::operator+(Fraction<T>& other) {
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
     T new_num = numerator * other.denominator + other.numerator * denominator;
     T new_den = denominator * other.denominator;
     return Fraction<T>(new_num, new_den).reduce();
@@ -49,6 +71,15 @@ Fraction<T> Fraction<T>::operator+(Fraction<T>& other) {
 // Overloaded operator: Subtraction
 template <typename T>
 Fraction<T> Fraction<T>::operator-(Fraction<T>& other) {
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
     T new_num = numerator * other.denominator - other.numerator * denominator;
     T new_den = denominator * other.denominator;
     return Fraction<T>(new_num, new_den).reduce();
@@ -57,6 +88,15 @@ Fraction<T> Fraction<T>::operator-(Fraction<T>& other) {
 // Overloaded operator: Multiplication
 template <typename T>
 Fraction<T> Fraction<T>::operator*(Fraction<T>& other) {
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
     T new_num = numerator * other.numerator;
     T new_den = denominator * other.denominator;
     return Fraction<T>(new_num, new_den).reduce();
@@ -65,6 +105,15 @@ Fraction<T> Fraction<T>::operator*(Fraction<T>& other) {
 // Overloaded operator: Division
 template <typename T>
 Fraction<T> Fraction<T>::operator/(Fraction<T>& other) {
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
     T new_num = numerator * other.denominator;
     T new_den = denominator * other.numerator;
     return Fraction<T>(new_num, new_den).reduce();
@@ -73,38 +122,99 @@ Fraction<T> Fraction<T>::operator/(Fraction<T>& other) {
 // Overloaded operator: Equal to
 template <typename T>
 bool Fraction<T>::operator==(Fraction<T>& other) {
-    return (numerator == other.numerator) && (denominator == other.denominator);
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
+    Fraction<T> curr = *this;
+    curr.reduce();
+    other.reduce();
+    return (curr.numerator == other.numerator && curr.denominator == other.denominator);
 }
 
 // Overloaded operator: Not equal to
 template <typename T>
 bool Fraction<T>::operator!=(Fraction<T>& other) {
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
     return !(*this == other);
 }
 
 // Overloaded operator: Less than or equal to
 template <typename T>
 bool Fraction<T>::operator<=(Fraction<T>& other) {
-    T common_den = denominator * other.denominator;
-    return (numerator * other.denominator) <= (other.numerator * denominator);
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    }
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
+    Fraction<T> curr = *this;
+    curr.reduce();
+    other.reduce();
+    return (curr.numerator * other.denominator <= other.numerator * curr.denominator);
 }
 
 // Overloaded operator: Less than
 template <typename T>
 bool Fraction<T>::operator<(Fraction<T>& other) {
-    T common_den = denominator * other.denominator;
-    return (numerator * other.denominator) < (other.numerator * denominator);
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
+    Fraction<T> curr = *this;
+    curr.reduce();
+    other.reduce();
+    return (curr.numerator * other.denominator < other.numerator * curr.denominator);
 }
 
 // Overloaded operator: Greater than or equal to
 template <typename T>
 bool Fraction<T>::operator>=(Fraction<T>& other) {
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
     return !(*this < other);
 }
 
 // Overloaded operator: Greater than
 template <typename T>
 bool Fraction<T>::operator>(Fraction<T>& other) {
+    if (numerator < 0 && denominator < 0) {
+    numerator = -numerator;
+    denominator = -denominator;
+    } 
+    else if (denominator < 0) {
+    denominator = -denominator;
+    numerator = -numerator;
+    }
+
     return !(*this <= other);
 }
 
@@ -112,16 +222,5 @@ bool Fraction<T>::operator>(Fraction<T>& other) {
 template <typename T>
 void Fraction<T>::print() {
     Fraction<T> reduced = reduce();
-    std::cout << reduced.numerator << "/" << reduced.denominator << std::endl;
+    std::cout << reduced.numerator << div_char << reduced.denominator << std::endl;
 }
-
-// Greatest common divisor (gcd) function
-template <typename T>
-T gcd(T a, T b) {
-    return b ? gcd<T>(b, a % b) : a;
-}
-
-// Explicit instantiations of the Fraction class for commonly used types
-template class Fraction<int>;
-template class Fraction<long long>;
-template class Fraction<double>;
