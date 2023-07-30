@@ -53,16 +53,16 @@ int main()
     // Practice_Q2
     int n;
 
-    cout<<"Enter the number: ";
-    cin>>n;
+    cout << "Enter the number: ";
+    cin >> n;
 
     if (n % 2 == 0)
     {
-        cout<<"It's even.";
+        cout << "It's even.";
     }
     else
     {
-        cout<<"It's odd.";
+        cout << "It's odd.";
     }
 
     return 0;
