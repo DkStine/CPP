@@ -68,18 +68,97 @@ int main()
         
     // }
 
-    int n;
-    cout << "Enter: ";
-    cin >> n;
+    // int n;
+    // cout << "Enter: ";
+    // cin >> n;
 
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= i; j++)
-        {
-            cout << i << " ";
-        }
-        cout << endl;
-    }
+    // for (int i = n; i > 0; i--)
+    // {
+    //     for (int j = 1; j <= i; j++)
+    //     {
+    //         cout << j << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    // int n; 
+    // cout << "enter: ";
+    // cin >> n;
+
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     for (int j = 1; j <= i; j++)
+    //     {
+    //         if ((i + j) % 2 == 0)
+    //         {
+    //             cout << 1 << " ";
+    //         }
+    //         else
+    //         {
+    //             cout << 0 << " ";                
+    //         }
+    //     }
+    //     cout << endl;
+    // }
+
+    // int n;
+    // cout << "Enter: ";
+    // cin >> n;
+
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     for (int j = 1; j <= n - i; j++)
+    //     {
+    //         cout << " ";
+    //     }
+    //     for (int k = 1; k <= n; k++)
+    //     {
+    //         cout << "* ";
+    //     }
+    //     cout << endl;
+    // }
+
+    // int n; 
+    // cout << "Enter: ";
+    // cin >> n;
+
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     for (int j = 1; j <= n - i; j++)
+    //     {
+    //         cout << " ";
+    //     }
+    //     for (int k = 1; k <= i; k++)
+    //     {
+    //         cout << k << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    // int n;
+    // cout << "Enter: ";
+    // cin >> n;
+
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     for (int l = 1; l <= n - i; l++)
+    //     {
+    //         cout << " ";
+    //     }
+    //     for (int j = i; j > 1; j--)
+    //     {
+    //         cout << j << " ";
+    //     }
+    //     // cout << 1 << " ";
+
+    //     for (int k = 1; k <= i; k++)
+    //     {
+    //         cout << k << " ";
+    //     }
+    //     cout << endl;
+    // }
+    
+
 
     return 0;
 }
